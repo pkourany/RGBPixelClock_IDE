@@ -114,11 +114,11 @@ boolean demoActive;
 
 
 /***** Weather webhook definitions *****/
-#define HOOK_RESP		"hook-response/pmk_w3"
-#define HOOK_PUB		"pmk_w3"
+#define HOOK_RESP	"hook-response/hook event name"	// specify your hook event name here
+#define HOOK_PUB	"hook event name"		// and here
 #define DEFAULT_CITY	"\"mycity\":\"Ottawa,ON\""	// Change to desired default city,state
-#define API_KEY			"\"apikey\":\"62810bbd5419f1ff67f8f61588833bf6\""
-#define UNITS			"\"units\":\"metric\""		// Change to "imperial" for farenheit units
+#define API_KEY		"\"apikey\":\"xxxxxxxxxxxxxxx\""// Add your API key here
+#define UNITS		"\"units\":\"metric\""		// Change to "imperial" for farenheit units
 /***************************************/
 
 /***** Create RGBmatrix Panel instance *****
