@@ -1,4 +1,4 @@
-#Pixel Clock (RGBPongClock) app for use with RGB Pixel Clock Kit
+#RGB Pixel Clock (RGBPongClock) app for use with RGB Pixel Clock Kit
 
 **Adapted for Particle Core by Paul Kourany, April 2015**
 - Updated for Particle Photon/Electron and v4 RGB Matrix Panel Shield, May 2016
