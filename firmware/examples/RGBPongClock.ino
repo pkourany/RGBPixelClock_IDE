@@ -24,10 +24,10 @@
 #include "Adafruit_mfGFX/Adafruit_mfGFX.h"   // Core graphics library
 #include "SparkIntervalTimer/SparkIntervalTimer.h"
 #include "RGBmatrixPanel/RGBmatrixPanel.h" // Hardware-specific library
-#include "fix_fft.h"
-#include "blinky.h"
-#include "font3x5.h"
-#include "font5x5.h"
+#include "RGBPixelClock/fix_fft.h"
+#include "RGBPixelClock/blinky.h"
+#include "RGBPixelClock/font3x5.h"
+#include "RGBPixelClock/font5x5.h"
 
 
 SYSTEM_THREAD(ENABLED);
