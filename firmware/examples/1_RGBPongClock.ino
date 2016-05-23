@@ -12,16 +12,13 @@
 **  Please refer to  https://github.com/pkourany/RGBPixelClock_IDE for details
 */
 
-/* The following libraries MUST be included:
-** Adafruit_mfGFX
-** SparkIntervalTimer
-** RGBmatrixPanel
+/* !!!!  In order for this app to compile correctly, the following Web IDE libraries MUST be attched:   !!!
+**  Adafruit_mfGFX
+**  SparkIntervalTimer
+**  RGBmatrixPanel
 */
 
 #include "RGBPixelClock/RGBPixelClock.h"   // Core graphics library
-#include "Adafruit_mfGFX/Adafruit_mfGFX.h"   // Core graphics library
-#include "SparkIntervalTimer/SparkIntervalTimer.h"
-#include "RGBmatrixPanel/RGBmatrixPanel.h" // Hardware-specific library
 #include "RGBPixelClock/fix_fft.h"
 #include "RGBPixelClock/blinky.h"
 #include "RGBPixelClock/font3x5.h"
