@@ -2,6 +2,7 @@
 
 **Adapted for Particle Core by Paul Kourany, April 2015**
 - Updated for Particle Photon/Electron and v4 RGB Matrix Panel Shield, May 2016
+- Add rainbow clock face, Aug 24/2016
 
 Andrew Holmes @pongclock
 
