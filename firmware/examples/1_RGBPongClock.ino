@@ -81,7 +81,7 @@ boolean demoActive;
 /****************************************/
 
 
-#define MAX_CLOCK_MODE		8                 // Number of clock modes
+#define MAX_CLOCK_MODE		9                 // Number of clock modes
 
 /********** RGB565 Color definitions **********/
 #define Black           0x0000
@@ -286,6 +286,7 @@ void marquee();
 void randomFillWorld();
 int neighbours(int x, int y);
 void conwayLife();
+void rainbow();
 /*************************************/
 
 
@@ -422,6 +423,9 @@ void loop(){
 	case 7: 
 		conwayLife();
 		break;
+	case 8:
+		rainbow();
+		break;
 	default:
 		normal_clock();
 		break;
@@ -507,6 +511,10 @@ int setMode(String command)
 	else if(command == "life") {
 		mode_changed = 1;
 		clock_mode = 7;
+	}
+	else if(command == "rainbow") {
+		mode_changed = 1;
+		clock_mode = 8;
 	}
 	if (mode_changed == 1) {
 		modeSwitch = millis();
@@ -2512,6 +2520,76 @@ void conwayLife()
 		}
 		Particle.process();	//Give the background process some lovin'
 		delay(30);
+	}
+}
+
+void rainbow() {
+	long hval = 0;
+	uint8_t x, y, r, g, b, a;
+	int16_t hue = 0;
+		
+	cls();
+	
+	int showTime = Time.now();
+	
+	while((Time.now() - showTime) < showClock) {
+		if (mode_changed == 1)
+			return;	
+		if(mode_quick){
+			mode_quick = false;
+			display_date();
+			quickWeather();
+			conwayLife();
+			return;
+		}
+
+		// Draw alternating rainbow
+		for(x=0; x<matrix.width(); x++) {
+			for(int h=hue, y=0; y<matrix.height(); y++, h += 48) {
+				a = h;
+				switch((h >> 8) % 6) {
+				case 0: r = 255; g =   a; b =   0; break;
+				case 1: r =  ~a; g = 255; b =   0; break;
+				case 2: r =   0; g = 255; b =   a; break;
+				case 3: r =   0; g =  ~a; b = 255; break;
+				case 4: r =   a; g =   0; b = 255; break;
+				case 5: r = 255; g =   0; b =  ~a; break;
+				}
+				matrix.drawPixel(x, y, matrix.Color888(r, g, b, true));
+			}
+		}
+		hue += 7;
+		if(hue >= 1536) hue -= 1536;
+		
+		// Display the time
+		int mins = Time.minute();
+		int hours = Time.hour();
+		char buffer[3];
+
+		itoa(hours,buffer,10);
+		//fix - as otherwise if num has leading zero, e.g. "03" hours, itoa coverts this to chars with space "3 ". 
+		if (hours < 10) {
+			buffer[1] = buffer[0];
+			buffer[0] = '0';
+		}
+		vectorNumber(buffer[0]-'0',8,1,Black,1,1);
+		vectorNumber(buffer[1]-'0',12,1,Black,1,1);
+
+		itoa(mins,buffer,10);
+		//fix - as otherwise if num has leading zero, e.g. "03" hours, itoa coverts this to chars with space "3 ". 
+		if (mins < 10) {
+			buffer[1] = buffer[0];
+			buffer[0] = '0';
+		}
+		vectorNumber(buffer[0]-'0',18,1,Black,1,1);
+		vectorNumber(buffer[1]-'0',22,1,Black,1,1);
+
+		matrix.drawPixel(16,2,Black);
+		matrix.drawPixel(16,4,Black);
+			
+		matrix.swapBuffers(false);
+		Particle.process();	//Give the background process some lovin'
+		delay(50);
 	}
 }
 
