@@ -33,7 +33,7 @@ SYSTEM_MODE(SEMI_AUTOMATIC);
 extern char* itoa(int a, char* buffer, unsigned char radix);
 
 
-#define		RGBPCversion	"V1.1"
+#define		RGBPCversion	"V1.2"
 
 //#define DEBUGME
 
