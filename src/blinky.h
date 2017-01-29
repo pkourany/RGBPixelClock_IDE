@@ -9,7 +9,7 @@
 #ifndef blinky_H
 #define blinky_H
 
-#include "application.h"
+#include "Particle.h"
 #define PROGMEM
 
 static const uint8_t blinky[] PROGMEM = { 
